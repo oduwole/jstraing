@@ -32,3 +32,42 @@ function signin() {
     xhttp.setRequestHeader('Content-type', 'application/json'); // application/x-www-form-urlencoded/
     xhttp.send(JSON.stringify(cred));
 }
+
+function login(){
+    var username = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+
+    var usernames = ['dabira@gmail', 'chidi@gmail.com', 'segun@gmail.com'];
+    var passwords = ['123456', 'abcdefgh', '54ae2f'];
+
+    var index = usernames.indexOf(username);
+    //console.log(index);
+    //document.getElementById('ind').innerText = index;
+    if(index >= 0){
+        var tempPass =  passwords[index];
+
+    if(password === tempPass){
+        //redirect to another page
+        document.getElementById('ind').innerText = 'valid credentials';
+        window.location.href = 'factorial.html';
+    }else{
+        alert('invalid credentials');
+        document.getElementById('ind').innerText = 'invalid credentials';
+    }
+    }else{
+        alert('username not found')
+        document.getElementById('ind').innerText = 'username not found';
+    }
+    
+}
+
+$(function(){
+    var btn =$('#loginBtn');
+    console.log(btn);
+    btn.click(function(e){
+        console.log(e);
+        console.log($(this))
+        $(this).addClass('red')
+    })
+})
+
